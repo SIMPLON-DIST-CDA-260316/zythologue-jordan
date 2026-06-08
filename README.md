@@ -1,5 +1,9 @@
 # Zythologue - Base de données pour amateurs de bières artisanales
 
+![Visuel du brief Zythologue](img/bier.png)
+
+---
+
 # Contexte du projet
 
 Vous allez concevoir une application web ou mobile destinée aux amateurs de bières artisanales.
@@ -54,6 +58,8 @@ Pour chaque donnée, précisez :
 ## Règles de gestion
 
 Les règles doivent être rédigées sous forme de phrases métier.
+
+Un support d'aide est disponible dans [`docs/aide-regles-gestion.md`](docs/aide-regles-gestion.md).
 
 Exemples de formulation :
 
@@ -245,7 +251,17 @@ Docker est utilisé uniquement pour fournir un environnement PostgreSQL identiqu
 
 L'objectif du projet n'est pas d'apprendre Docker en profondeur. Vous devez simplement être capables de lancer la base, de vous y connecter avec DBeaver et d'exécuter vos scripts SQL.
 
-Une configuration `docker-compose.yml` est fournie à la racine du dépôt.
+Une configuration `docker-compose.yml` est fournie à la racine du dépôt. Elle lance PostgreSQL 18 avec un volume persistant adapté aux images officielles PostgreSQL 18.
+
+Les valeurs de connexion sont centralisées dans un fichier `.env`.
+
+Un fichier `.env.example` est fourni comme modèle :
+
+```bash
+cp .env.example .env
+```
+
+Le fichier `.env` est volontairement ignoré par Git afin de garder les paramètres locaux propres à chaque machine.
 
 ---
 
@@ -289,22 +305,38 @@ Utilisez les informations suivantes pour vous connecter à PostgreSQL :
 
 ```text
 Host      : localhost
+Port      : valeur de POSTGRES_PORT
+Database  : valeur de POSTGRES_DB
+Username  : valeur de POSTGRES_USER
+Password  : valeur de POSTGRES_PASSWORD
+```
+
+Avec le fichier `.env` fourni, les valeurs par défaut sont :
+
+```text
+Host      : localhost
 Port      : 5432
 Database  : zythologue
 Username  : zythologue
 Password  : zythologue
 ```
 
-Si le port `5432` est déjà utilisé sur votre machine, modifiez le port exposé dans le fichier `docker-compose.yml`.
+Si le port `5432` est déjà utilisé sur votre machine, modifiez `POSTGRES_PORT` dans le fichier `.env`.
 
 Exemple :
 
-```yaml
-ports:
-  - "5433:5432"
+```env
+POSTGRES_PORT=5433
 ```
 
 Dans ce cas, utilisez le port `5433` dans DBeaver.
+
+Si vous aviez déjà lancé une ancienne version de PostgreSQL avec ce projet, supprimez l'ancien environnement avant de relancer :
+
+```bash
+docker compose down -v
+docker compose up -d
+```
 
 ---
 
