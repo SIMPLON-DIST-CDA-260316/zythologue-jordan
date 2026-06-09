@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Brasserie de Chimay",
+    "description": "Brasserie trappiste belge fondée en 1862 par les moines cisterciens de l'abbaye Notre-Dame de Scourmont. Reconnue mondialement pour ses bières de caractère brassées selon la tradition trappiste.",
+    "country": "Belgique",
+    "city": "Chimay",
+    "website": "https://www.chimay.com"
+  },
+  {
+    "id": 2,
+    "name": "Duvel Moortgat",
+    "description": "Brasserie belge familiale fondée en 1871, célèbre pour sa Duvel, une bière forte dorée à fermentation haute. Le groupe brasse également les bières Maredsous et Vedett.",
+    "country": "Belgique",
+    "city": "Breendonk",
+    "website": "https://www.duvel.com"
+  },
+  {
+    "id": 3,
+    "name": "Brasserie d'Orval",
+    "description": "Abbaye trappiste cistercienne fondée au XIIe siècle dans la province de Luxembourg belge. Brasse une bière unique au monde, reconnue pour son caractère sec et sa refermentation en bouteille.",
+    "country": "Belgique",
+    "city": "Villers-devant-Orval",
+    "website": "https://www.orval.be"
+  },
+  {
+    "id": 4,
+    "name": "Brasserie Cantillon",
+    "description": "Brasserie artisanale bruxelloise fondée en 1900, spécialisée dans les bières lambic à fermentation spontanée. Véritable musée vivant de la brasserie traditionnelle belge.",
+    "country": "Belgique",
+    "city": "Bruxelles",
+    "website": "https://www.cantillon.be"
+  },
+  {
+    "id": 5,
+    "name": "Brasserie de la Senne",
+    "description": "Brasserie artisanale bruxelloise fondée en 2010 par Yvan De Baets et Bernard Leboucq, connue pour ses bières houblonnées et non filtrées inspirées des traditions belges et américaines.",
+    "country": "Belgique",
+    "city": "Bruxelles",
+    "website": "https://www.brasseriedela senne.be"
+  },
+  {
+    "id": 6,
+    "name": "Weihenstephan",
+    "description": "La plus ancienne brasserie du monde encore en activité, fondée en 1040 près de Munich. Rattachée à l'Université technique de Munich, elle est référence mondiale pour les bières blanches bavaroises.",
+    "country": "Allemagne",
+    "city": "Freising",
+    "website": "https://www.weihenstephaner.de"
+  },
+  {
+    "id": 7,
+    "name": "Paulaner",
+    "description": "Brasserie munichoise fondée en 1634 par des moines franciscains. Célèbre pour ses bières de saison comme la Salvator, la première Doppelbock de l'histoire, et ses weizenbier.",
+    "country": "Allemagne",
+    "city": "Munich",
+    "website": "https://www.paulaner.com"
+  },
+  {
+    "id": 8,
+    "name": "Sierra Nevada Brewing Co.",
+    "description": "Pionnière du mouvement craft beer américain, fondée en 1980 à Chico en Californie par Ken Grossman. Sa Pale Ale est considérée comme l'une des bières artisanales les plus influentes au monde.",
+    "country": "États-Unis",
+    "city": "Chico",
+    "website": "https://www.sierranevada.com"
+  },
+  {
+    "id": 9,
+    "name": "Stone Brewing",
+    "description": "Brasserie artisanale fondée en 1996 en Californie, connue pour ses IPA puissantes et houblonnées. L'une des plus grandes brasseries craft indépendantes des États-Unis.",
+    "country": "États-Unis",
+    "city": "Escondido",
+    "website": "https://www.stonebrewing.com"
+  },
+  {
+    "id": 10,
+    "name": "BrewDog",
+    "description": "Brasserie artisanale écossaise fondée en 2007 par James Watt et Martin Dickie. Pionnière du mouvement craft beer européen, réputée pour ses IPA audacieuses et sa philosophie de transparence.",
+    "country": "Royaume-Uni",
+    "city": "Ellon",
+    "website": "https://www.brewdog.com"
+  },
+  {
+    "id": 11,
+    "name": "Brasserie des Franches-Montagnes",
+    "description": "Brasserie artisanale suisse fondée en 1997 dans le Jura bernois par Jérôme Rebetez. Connue pour ses créations originales et son approche expérimentale, notamment la Abbaye de Saint Bon-Chien.",
+    "country": "Suisse",
+    "city": "Saignelégier",
+    "website": "https://www.brasseriebfm.ch"
+  },
+  {
+    "id": 12,
+    "name": "Brasserie du Mont Blanc",
+    "description": "Brasserie artisanale savoyarde fondée en 1999 au pied du Mont Blanc. Elle élabore des bières de caractère en utilisant l'eau pure des glaciers alpins et des matières premières sélectionnées.",
+    "country": "France",
+    "city": "Saint-Gervais-les-Bains",
+    "website": "https://www.brasseriedumontblanc.com"
+  }
+]

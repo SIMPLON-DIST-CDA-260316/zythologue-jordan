@@ -1,0 +1,14 @@
+[
+  {"id": 1, "url": "https://images.example.com/breweries/chimay-1.jpg", "brewery_id": 1},
+  {"id": 2, "url": "https://images.example.com/breweries/chimay-2.jpg", "brewery_id": 1},
+  {"id": 3, "url": "https://images.example.com/breweries/duvel-moortgat-1.jpg", "brewery_id": 2},
+  {"id": 4, "url": "https://images.example.com/breweries/orval-1.jpg", "brewery_id": 3},
+  {"id": 5, "url": "https://images.example.com/breweries/cantillon-1.jpg", "brewery_id": 4},
+  {"id": 6, "url": "https://images.example.com/breweries/brasserie-de-la-senne-1.jpg", "brewery_id": 5},
+  {"id": 7, "url": "https://images.example.com/breweries/weihenstephan-1.jpg", "brewery_id": 6},
+  {"id": 8, "url": "https://images.example.com/breweries/paulaner-1.jpg", "brewery_id": 7},
+  {"id": 9, "url": "https://images.example.com/breweries/sierra-nevada-1.jpg", "brewery_id": 8},
+  {"id": 10, "url": "https://images.example.com/breweries/stone-brewing-1.jpg", "brewery_id": 9},
+  {"id": 11, "url": "https://images.example.com/breweries/brewdog-1.jpg", "brewery_id": 10},
+  {"id": 12, "url": "https://images.example.com/breweries/bfm-1.jpg", "brewery_id": 11}
+]

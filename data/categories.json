@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Triple",
+    "description": "Bière belge à haute fermentation, forte (8-10%), dorée à ambrée, avec un profil aromatique complexe mêlant fruits, épices et une légère amertume. Associée aux brasseries trappistes et d'abbaye."
+  },
+  {
+    "id": 2,
+    "name": "Blonde",
+    "description": "Bière de couleur dorée à jaune pâle, généralement légère à modérément alcoolisée (4-7%). Profil équilibré entre malt et houblon, souvent fruitée et rafraîchissante."
+  },
+  {
+    "id": 3,
+    "name": "Brune",
+    "description": "Bière foncée à base de malts torréfiés, avec des arômes de chocolat, caramel et café. Alcool modéré à élevé (5-9%), corps ample et saveurs complexes."
+  },
+  {
+    "id": 4,
+    "name": "Rouge / Ambrée",
+    "description": "Bière de couleur rousse à rouge cuivrée, caractérisée par ses notes de caramel et de malt légèrement torréfié. Amertume modérée, corps généreux."
+  },
+  {
+    "id": 5,
+    "name": "IPA",
+    "description": "India Pale Ale : bière fortement houblonnée avec des arômes intenses de résine, agrumes, fruits tropicaux ou herbes. Amertume prononcée, alcool modéré à élevé (5-7.5%)."
+  },
+  {
+    "id": 6,
+    "name": "Stout",
+    "description": "Bière noire opaque à base de malt fortement torréfié ou grillé. Saveurs prononcées de café, chocolat amer et parfois caramel. Corps plein, crémeux, faible à forte teneur en alcool."
+  },
+  {
+    "id": 7,
+    "name": "Witbier",
+    "description": "Bière blanche belge brassée avec du blé non malté, traditionnellement épicée à la coriandre et à l'écorce d'orange. Trouble, légère, rafraîchissante, faiblement alcoolisée (4-5%)."
+  },
+  {
+    "id": 8,
+    "name": "Saison",
+    "description": "Bière de ferme belge historiquement brassée en hiver pour les travailleurs saisonniers. Sèche, effervescente, légèrement épicée, avec des notes fruitées et herbacées. Alcool modéré (5-8%)."
+  },
+  {
+    "id": 9,
+    "name": "Gueuze / Lambic",
+    "description": "Bière belge à fermentation spontanée produite dans la vallée de la Senne. Le lambic est un assemblage de vieux et jeunes lambics, sec, acidulé, avec des notes de fruits et de levures sauvages."
+  },
+  {
+    "id": 10,
+    "name": "Bock",
+    "description": "Bière lager allemande forte (6-7.5%), de couleur ambrée à brune. Maltée, légèrement sucrée, avec peu d'amertume. Le Doppelbock est une version encore plus forte et riche."
+  }
+]
