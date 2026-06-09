@@ -1,9 +1,5 @@
 # Zythologue - Base de données pour amateurs de bières artisanales
 
-![Visuel du brief Zythologue](img/bier.png)
-
----
-
 # Contexte du projet
 
 Vous allez concevoir une application web ou mobile destinée aux amateurs de bières artisanales.
