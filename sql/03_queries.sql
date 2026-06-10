@@ -178,3 +178,19 @@ WHERE beer_id = (
     SELECT id FROM beer WHERE name = 'Chimay Rouge'
 )
 RETURNING id, url;
+
+
+-- ============================================================
+-- Q14 (Bonus) — Consulter le journal des insertions de bières
+-- ============================================================
+SELECT
+    bl.id               AS log_id,
+    bl.logged_at        AS date_ajout,
+    bl.beer_id          AS id_biere,
+    bl.beer_name        AS nom_biere,
+    br.name             AS brasserie,
+    bl.logged_by        AS utilisateur_db
+FROM beer_log bl
+JOIN beer    b  ON b.id  = bl.beer_id
+JOIN brewery br ON br.id = b.brewery_id
+ORDER BY bl.logged_at DESC;

@@ -5,7 +5,7 @@
 -- Exécution depuis la racine du projet (psql côté client) :
 --   PGPASSWORD=zythologue psql -h localhost -p 5432 -U zythologue -d zythologue -f sql/02_seed.sql
 --
--- Les meta-commandes \set `cat ...` sont traitées côté client ;
+-- Les meta-commandes \set `type...` sont traitées côté client ;
 -- les fichiers JSON doivent être accessibles depuis le répertoire
 -- courant au moment de l'exécution.
 -- ============================================================
@@ -33,7 +33,7 @@ RESTART IDENTITY CASCADE;
 -- 2. Tables indépendantes
 -- ============================================================
 
-\set users `cat data/users.json`
+\set users `type data\users.json`
 INSERT INTO "user" (id, lastname, firstname, email, password, birthdate, role, created_at, updated_at)
 SELECT
     (elem->>'id')::INTEGER,
@@ -47,7 +47,7 @@ SELECT
     (elem->>'updated_at')::TIMESTAMPTZ
 FROM json_array_elements(:'users'::json) AS elem;
 
-\set breweries `cat data/breweries.json`
+\set breweries `type data\breweries.json`
 INSERT INTO brewery (id, name, description, country, city, website)
 SELECT
     (elem->>'id')::INTEGER,
@@ -58,7 +58,7 @@ SELECT
     elem->>'website'
 FROM json_array_elements(:'breweries'::json) AS elem;
 
-\set categories `cat data/categories.json`
+\set categories `type data\categories.json`
 INSERT INTO category (id, name, description)
 SELECT
     (elem->>'id')::INTEGER,
@@ -66,7 +66,7 @@ SELECT
     elem->>'description'
 FROM json_array_elements(:'categories'::json) AS elem;
 
-\set ingredients `cat data/ingredients.json`
+\set ingredients `type data\ingredients.json`
 INSERT INTO ingredient (id, name, description)
 SELECT
     (elem->>'id')::INTEGER,
@@ -78,7 +78,7 @@ FROM json_array_elements(:'ingredients'::json) AS elem;
 -- 3. Tables avec FK
 -- ============================================================
 
-\set beers `cat data/beers.json`
+\set beers `type data\beers.json`
 INSERT INTO beer (id, name, description, price, alcohol_level, is_alcohol_free, brewery_id)
 SELECT
     (elem->>'id')::INTEGER,
@@ -90,7 +90,7 @@ SELECT
     (elem->>'brewery_id')::INTEGER
 FROM json_array_elements(:'beers'::json) AS elem;
 
-\set beer_reviews `cat data/beer_reviews.json`
+\set beer_reviews `type data\beer_reviews.json`
 INSERT INTO beer_review (id, grade, comment, created_at, user_id, beer_id)
 SELECT
     (elem->>'id')::INTEGER,
@@ -101,7 +101,7 @@ SELECT
     (elem->>'beer_id')::INTEGER
 FROM json_array_elements(:'beer_reviews'::json) AS elem;
 
-\set brewery_reviews `cat data/brewery_reviews.json`
+\set brewery_reviews `type data\brewery_reviews.json`
 INSERT INTO brewery_review (id, grade, comment, created_at, user_id, brewery_id)
 SELECT
     (elem->>'id')::INTEGER,
@@ -112,7 +112,7 @@ SELECT
     (elem->>'brewery_id')::INTEGER
 FROM json_array_elements(:'brewery_reviews'::json) AS elem;
 
-\set beer_photos `cat data/beer_photos.json`
+\set beer_photos `type data\beer_photos.json`
 INSERT INTO beer_photo (id, url, beer_id)
 SELECT
     (elem->>'id')::INTEGER,
@@ -120,7 +120,7 @@ SELECT
     (elem->>'beer_id')::INTEGER
 FROM json_array_elements(:'beer_photos'::json) AS elem;
 
-\set brewery_photos `cat data/brewery_photos.json`
+\set brewery_photos `type data\brewery_photos.json`
 INSERT INTO brewery_photo (id, url, brewery_id)
 SELECT
     (elem->>'id')::INTEGER,
@@ -132,7 +132,7 @@ FROM json_array_elements(:'brewery_photos'::json) AS elem;
 -- 4. Tables de liaison (clés primaires composites)
 -- ============================================================
 
-\set beer_favorites `cat data/beer_favorites.json`
+\set beer_favorites `type data\beer_favorites.json`
 INSERT INTO beer_favorite (user_id, beer_id, created_at)
 SELECT
     (elem->>'user_id')::INTEGER,
@@ -140,7 +140,7 @@ SELECT
     (elem->>'created_at')::TIMESTAMPTZ
 FROM json_array_elements(:'beer_favorites'::json) AS elem;
 
-\set brewery_favorites `cat data/brewery_favorites.json`
+\set brewery_favorites `type data\brewery_favorites.json`
 INSERT INTO brewery_favorite (user_id, brewery_id, created_at)
 SELECT
     (elem->>'user_id')::INTEGER,
@@ -148,14 +148,14 @@ SELECT
     (elem->>'created_at')::TIMESTAMPTZ
 FROM json_array_elements(:'brewery_favorites'::json) AS elem;
 
-\set beer_categories `cat data/beer_categories.json`
+\set beer_categories `type data\beer_categories.json`
 INSERT INTO beer_category (beer_id, category_id)
 SELECT
     (elem->>'beer_id')::INTEGER,
     (elem->>'category_id')::INTEGER
 FROM json_array_elements(:'beer_categories'::json) AS elem;
 
-\set beer_ingredients `cat data/beer_ingredients.json`
+\set beer_ingredients `type data\beer_ingredients.json`
 INSERT INTO beer_ingredient (beer_id, ingredient_id)
 SELECT
     (elem->>'beer_id')::INTEGER,

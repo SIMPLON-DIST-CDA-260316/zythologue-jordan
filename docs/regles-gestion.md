@@ -52,6 +52,17 @@
 | ------------------------------------------------------------ |
 | Un ingrédient peut concerner aucune, une ou plusieurs bières |
 
+| Journal bière                                                                                                |
+| ------------------------------------------------------------------------------------------------------------ |
+| Toute insertion d'une bière doit être automatiquement enregistrée dans le journal                            |
+| Une entrée de journal doit référencer la bière insérée                                                       |
+| Une entrée de journal doit conserver le nom de la bière au moment de l'insertion                             |
+| Une entrée de journal doit enregistrer l'horodatage exact de l'insertion                                     |
+| Une entrée de journal ne peut pas être modifiée après sa création                                            |
+| Une entrée de journal ne peut pas être supprimée manuellement                                                |
+| Si une bière est supprimée, ses entrées de journal le sont aussi (CASCADE)                                   |
+| L'enregistrement dans le journal est déclenché automatiquement par la base de données, pas par l'application |
+
 | Avis Bière                                                               |
 | ------------------------------------------------------------------------ |
 | Un avis peut avoir un commentaire (facultatif)                           |

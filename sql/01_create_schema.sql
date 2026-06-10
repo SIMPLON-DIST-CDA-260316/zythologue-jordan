@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS brewery_photo CASCADE;
 DROP TABLE IF EXISTS beer_photo CASCADE;
 DROP TABLE IF EXISTS brewery_review CASCADE;
 DROP TABLE IF EXISTS beer_review CASCADE;
+DROP TABLE IF EXISTS beer_log CASCADE;
 DROP TABLE IF EXISTS beer CASCADE;
 DROP TABLE IF EXISTS ingredient CASCADE;
 DROP TABLE IF EXISTS category CASCADE;
@@ -71,6 +72,38 @@ CREATE TABLE IF NOT EXISTS beer (
     brewery_id      INTEGER         NOT NULL
                         REFERENCES brewery(id) ON DELETE CASCADE
 );
+
+-- ============================================================
+-- Journalisation des insertions de bières
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS beer_log (
+    id          SERIAL          PRIMARY KEY,
+    beer_id     INTEGER         NOT NULL
+                    REFERENCES beer(id) ON DELETE CASCADE,
+    beer_name   VARCHAR(255)    NOT NULL,
+    action      VARCHAR(10)     NOT NULL DEFAULT 'INSERT'
+                    CHECK (action IN ('INSERT')),
+    logged_at   TIMESTAMPTZ     NOT NULL DEFAULT NOW(),
+    logged_by   VARCHAR(100)    NOT NULL DEFAULT current_user
+);
+
+-- Fonction déclenchée automatiquement à chaque INSERT sur beer
+CREATE OR REPLACE FUNCTION fn_log_beer_insert()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO beer_log (beer_id, beer_name, action, logged_at, logged_by)
+    VALUES (NEW.id, NEW.name, 'INSERT', NOW(), current_user);
+    RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER trg_beer_insert_log
+AFTER INSERT ON beer
+FOR EACH ROW
+EXECUTE FUNCTION fn_log_beer_insert();
 
 CREATE TABLE IF NOT EXISTS beer_review (
     id          SERIAL PRIMARY KEY,

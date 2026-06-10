@@ -41,3 +41,9 @@
 | lien_photo_bière             | Url de la photo d'une bière                     | Obligatoire | Texte (url)    | -                                                   |
 | id_photo_brasserie           | Identifiant de la photo d'une brasserie         | Obligatoire | Serial         | Unique, auto-incrémentée, clé primaire              |
 | lien_photo_brasserie         | Url de la photo d'une brasserie                 | Obligatoire | Texte (url)    | -                                                   |
+| id_journal_bière             | Identifiant unique de l'entrée de journal       | Obligatoire | Serial         | Unique, auto-incrémenté, clé primaire               |
+| id_bière_journal             | Référence à la bière insérée                    | Obligatoire | Entier         | Clé étrangère vers bière                            |
+| nom_bière_journal            | Nom de la bière au moment de l'insertion        | Obligatoire | Texte          | Snapshot dénormalisé                                |
+| action_journal               | Type d'opération enregistrée                    | Obligatoire | Texte          | Valeur fixe : INSERT                                |
+| date_journal                 | Horodatage de l'insertion                       | Obligatoire | Date avec fuseau horaire | Auto-générée                            |
+| utilisateur_db_journal       | Rôle PostgreSQL ayant effectué l'insertion      | Obligatoire | Texte          | Auto-généré via current_user                        |
