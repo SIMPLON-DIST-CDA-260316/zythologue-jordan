@@ -179,9 +179,8 @@ WHERE beer_id = (
 )
 RETURNING id, url;
 
-
 -- ============================================================
--- Q14 (Bonus) — Consulter le journal des insertions de bières
+-- Bonus 2 — Consulter le journal des insertions de bières
 -- ============================================================
 SELECT
     bl.id               AS log_id,
@@ -194,3 +193,33 @@ FROM beer_log bl
 JOIN beer    b  ON b.id  = bl.beer_id
 JOIN brewery br ON br.id = b.brewery_id
 ORDER BY bl.logged_at DESC;
+
+-- ============================================================
+-- Bonus 3 — Procédure stockée : noter une bière
+--   - INSERT si l'utilisateur n'a pas encore noté cette bière
+--   - UPDATE si une note existe déjà
+-- ============================================================
+CREATE OR REPLACE PROCEDURE sp_rate_beer(
+    p_user_id  INTEGER,
+    p_beer_id  INTEGER,
+    p_grade    INTEGER,
+    p_comment  TEXT DEFAULT NULL
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    INSERT INTO beer_review (grade, comment, user_id, beer_id)
+    VALUES (p_grade, p_comment, p_user_id, p_beer_id)
+    ON CONFLICT (user_id, beer_id)
+    DO UPDATE SET
+        grade   = EXCLUDED.grade,
+        comment = EXCLUDED.comment;
+END;
+$$;
+
+-- Exemples d'utilisation :
+-- Nouvelle note (user 1, bière 5, note 8)
+CALL sp_rate_beer(1, 5, 8, 'Belle amertume, très équilibrée.');
+
+-- Mise à jour de la même note (même user, même bière, note changée)
+CALL sp_rate_beer(1, 5, 9, 'Encore meilleure en la redégustant !');

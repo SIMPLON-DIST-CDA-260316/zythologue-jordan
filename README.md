@@ -41,27 +41,15 @@ docker compose down -v
 
 ## Exécution des scripts SQL
 
-Les scripts doivent être exécutés dans cet ordre :
-
-### 1. Créer le schéma
+Depuis la racine du projet, lancer les trois commandes dans l'ordre :
 
 ```bash
 docker exec -i zythologue-postgres psql -U zythologue -d zythologue < sql/01_create_schema.sql
-```
-
-### 2. Insérer les données de test
-
-> Le seed utilise la meta-commande psql `\set` avec backtick (`cat data/fichier.json`), qui s'exécute **côté client**. Il faut donc lancer psql depuis la racine du projet sur la machine hôte, et non via `docker exec`.
-
-```bash
-PGPASSWORD=zythologue psql -h localhost -p 5433 -U zythologue -d zythologue -f sql/02_seed.sql
-```
-
-### 3. Exécuter les requêtes
-
-```bash
+docker exec -i zythologue-postgres psql -U zythologue -d zythologue < sql/02_seed.sql
 docker exec -i zythologue-postgres psql -U zythologue -d zythologue < sql/03_queries.sql
 ```
+
+Ces commandes fonctionnent sur Windows, macOS et Linux sans modification.
 
 ---
 
