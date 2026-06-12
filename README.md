@@ -30,26 +30,32 @@ docker compose down -v
 | Paramètre | Valeur par défaut |
 |-----------|-------------------|
 | Host      | `localhost`       |
-| Port      | `5433`            |
+| Port      | `5434`            |
 | Database  | `zythologue`      |
 | Username  | `zythologue`      |
 | Password  | `zythologue`      |
 
-> Si le port `5433` est déjà utilisé, modifiez `POSTGRES_PORT` dans le fichier `.env` et adaptez la valeur dans DBeaver.
+> Si le port `5434` est déjà utilisé, modifiez `POSTGRES_PORT` dans le fichier `.env` et adaptez la valeur dans DBeaver.
 
 ---
 
 ## Exécution des scripts SQL
 
-Depuis la racine du projet, lancer les trois commandes dans l'ordre :
+Depuis la racine du projet, lancer les trois commandes dans l'ordre.
 
+**macOS / Linux (bash/zsh)**
 ```bash
 docker exec -i zythologue-postgres psql -U zythologue -d zythologue < sql/01_create_schema.sql
 docker exec -i zythologue-postgres psql -U zythologue -d zythologue < sql/02_seed.sql
 docker exec -i zythologue-postgres psql -U zythologue -d zythologue < sql/03_queries.sql
 ```
 
-Ces commandes fonctionnent sur Windows, macOS et Linux sans modification.
+**Windows (PowerShell)**
+```powershell
+Get-Content sql\01_create_schema.sql | docker exec -i zythologue-postgres psql -U zythologue -d zythologue
+Get-Content sql\02_seed.sql | docker exec -i zythologue-postgres psql -U zythologue -d zythologue
+Get-Content sql\03_queries.sql | docker exec -i zythologue-postgres psql -U zythologue -d zythologue
+```
 
 ---
 
