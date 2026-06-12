@@ -24,8 +24,8 @@ ORDER BY alcohol_level ASC, name;
 SELECT
     c.name          AS categorie,
     COUNT(bc.beer_id) AS nb_bieres
-FROM category c
-LEFT JOIN beer_category bc ON bc.category_id = c.id
+FROM category  AS c
+LEFT JOIN beer_category AS bc ON bc.category_id = c.id
 GROUP BY c.id, c.name
 ORDER BY nb_bieres DESC, c.name;
 
@@ -38,8 +38,8 @@ SELECT
     b.name          AS biere,
     b.alcohol_level AS degre,
     b.price         AS prix
-FROM beer b
-JOIN brewery br ON br.id = b.brewery_id
+FROM beer AS b
+JOIN brewery AS br ON br.id = b.brewery_id
 WHERE br.name = 'Brasserie de Chimay'
 ORDER BY b.name;
 
@@ -52,8 +52,8 @@ SELECT
     u.firstname     AS prenom,
     u.lastname      AS nom,
     COUNT(bf.beer_id) AS nb_favoris
-FROM "user" u
-LEFT JOIN beer_favorite bf ON bf.user_id = u.id
+FROM "user" AS u
+LEFT JOIN beer_favorite AS bf ON bf.user_id = u.id
 GROUP BY u.id, u.firstname, u.lastname
 ORDER BY nb_favoris DESC, u.lastname;
 
@@ -81,8 +81,8 @@ SELECT
     br.name         AS brasserie,
     b.name          AS biere,
     b.alcohol_level AS degre
-FROM beer b
-JOIN brewery br ON br.id = b.brewery_id
+FROM beer AS b
+JOIN brewery AS br ON br.id = b.brewery_id
 ORDER BY br.country, br.name, b.name;
 
 
@@ -93,8 +93,8 @@ SELECT
     b.name                                              AS biere,
     STRING_AGG(i.name, ', ' ORDER BY i.name)            AS ingredients
 FROM beer b
-JOIN beer_ingredient bi ON bi.beer_id = b.id
-JOIN ingredient i ON i.id = bi.ingredient_id
+JOIN beer_ingredient AS bi ON bi.beer_id = b.id
+JOIN ingredient AS i ON i.id = bi.ingredient_id
 GROUP BY b.id, b.name
 ORDER BY b.name;
 
@@ -105,8 +105,8 @@ ORDER BY b.name;
 SELECT
     br.name         AS brasserie,
     COUNT(b.id)     AS nb_bieres
-FROM brewery br
-JOIN beer b ON b.brewery_id = br.id
+FROM brewery AS br
+JOIN beer AS b ON b.brewery_id = br.id
 GROUP BY br.id, br.name
 HAVING COUNT(b.id) > 5
 ORDER BY nb_bieres DESC;
@@ -117,10 +117,10 @@ ORDER BY nb_bieres DESC;
 -- ============================================================
 SELECT
     b.name          AS biere
-FROM beer b
+FROM beer AS b
 WHERE NOT EXISTS (
     SELECT 1
-    FROM beer_favorite bf
+    FROM beer_favorite AS bf
     WHERE bf.beer_id = b.id
 )
 ORDER BY b.name;
@@ -130,13 +130,12 @@ ORDER BY b.name;
 -- Q10 — Trouver les bières favorites communes entre deux utilisateurs
 --        (exemple : user_id 1 et user_id 2)
 -- ============================================================
-select
-
+SELECT
     b.name          AS biere,
     b.alcohol_level AS degre
-FROM beer_favorite bf1
-JOIN beer_favorite bf2 ON bf2.beer_id = bf1.beer_id
-JOIN beer b ON b.id = bf1.beer_id
+FROM beer_favorite AS bf1
+JOIN beer_favorite AS bf2 ON bf2.beer_id = bf1.beer_id
+JOIN beer AS b ON b.id = bf1.beer_id
 WHERE bf1.user_id = 1
   AND bf2.user_id = 2
 ORDER BY b.name;
@@ -149,9 +148,9 @@ ORDER BY b.name;
 SELECT
     br.name                         AS brasserie,
     ROUND(AVG(r.grade), 2)          AS note_moyenne
-FROM brewery br
-JOIN beer b ON b.brewery_id = br.id
-JOIN beer_review r ON r.beer_id = b.id
+FROM brewery AS br
+JOIN beer AS b ON b.brewery_id = br.id
+JOIN beer_review AS r ON r.beer_id = b.id
 GROUP BY br.id, br.name
 HAVING AVG(r.grade) > 7
 ORDER BY note_moyenne DESC;
@@ -189,9 +188,9 @@ SELECT
     bl.beer_name        AS nom_biere,
     br.name             AS brasserie,
     bl.logged_by        AS utilisateur_db
-FROM beer_log bl
-JOIN beer    b  ON b.id  = bl.beer_id
-JOIN brewery br ON br.id = b.brewery_id
+FROM beer_log AS bl
+JOIN beer AS b  ON b.id  = bl.beer_id
+JOIN brewery AS br ON br.id = b.brewery_id
 ORDER BY bl.logged_at DESC;
 
 -- ============================================================
